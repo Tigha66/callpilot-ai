@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CallPilot AI | 24/7 AI Phone Receptionist</title>
+  <meta name="description" content="CallPilot AI is a 24/7 AI phone receptionist for local businesses. Never miss another customer call." />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #020617;
+      color: #ffffff;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: auto;
+    }
+
+    header {
+      padding: 24px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      background: rgba(2, 6, 23, 0.9);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 22px;
+    }
+
+    .logo-icon {
+      width: 44px;
+      height: 44px;
+      background: #22d3ee;
+      color: #020617;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      font-size: 22px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      color: #cbd5e1;
+      font-size: 15px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 24px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: #22d3ee;
+      color: #020617;
+    }
+
+    .btn-primary:hover {
+      background: #67e8f9;
+    }
+
+    .btn-secondary {
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.06);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.12);
+    }
+
+    .hero {
+      padding: 90px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glow {
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      background: rgba(34, 211, 238, 0.18);
+      border-radius: 999px;
+      filter: blur(80px);
+      top: 20px;
+      right: -120px;
+      z-index: -1;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(34, 211, 238, 0.12);
+      border: 1px solid rgba(34, 211, 238, 0.25);
+      color: #a5f3fc;
+      font-size: 14px;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-size: clamp(44px, 6vw, 76px);
+      line-height: 0.95;
+      letter-spacing: -2px;
+      margin-bottom: 24px;
+    }
+
+    .hero p {
+      color: #cbd5e1;
+      font-size: 19px;
+      max-width: 610px;
+      margin-bottom: 32px;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 34px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      max-width: 560px;
+    }
+
+    .stat {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 18px;
+      border-radius: 22px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 24px;
+    }
+
+    .stat span {
+      color: #94a3b8;
+      font-size: 13px;
+    }
+
+    .phone-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 34px;
+      padding: 18px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.35);
+    }
+
+    .phone-inner {
+      background: #0f172a;
+      border-radius: 26px;
+      padding: 28px;
+    }
+
+    .call-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding-bottom: 22px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .call-top small {
+      color: #94a3b8;
+    }
+
+    .call-top h3 {
+      font-size: 26px;
+      line-height: 1.2;
+    }
+
+    .call-icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 20px;
+      background: rgba(34,197,94,0.15);
+      color: #86efac;
+      display: grid;
+      place-items: center;
+      font-size: 26px;
+    }
+
+    .message {
+      margin-top: 20px;
+      background: rgba(255,255,255,0.06);
+      padding: 18px;
+      border-radius: 20px;
+      color: #e2e8f0;
+    }
+
+    .lead {
+      margin-top: 16px;
+      background: rgba(34,211,238,0.1);
+      border: 1px solid rgba(34,211,238,0.18);
+      padding: 18px;
+      border-radius: 20px;
+    }
+
+    .lead ul {
+      list-style: none;
+      margin-top: 10px;
+      color: #dbeafe;
+    }
+
+    .lead li {
+      margin-bottom: 8px;
+    }
+
+    section {
+      padding: 72px 0;
+    }
+
+    .section-title {
+      max-width: 720px;
+      margin-bottom: 36px;
+    }
+
+    .section-title small {
+      color: #22d3ee;
+      font-weight: 800;
+    }
+
+    .section-title h2 {
+      font-size: clamp(34px, 4vw, 52px);
+      line-height: 1;
+      margin-top: 10px;
+      margin-bottom: 16px;
+    }
+
+    .section-title p {
+      color: #cbd5e1;
+      font-size: 18px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 28px;
+      padding: 26px;
+    }
+
+    .card-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 18px;
+      background: rgba(34,211,238,0.14);
+      color: #67e8f9;
+      display: grid;
+      place-items: center;
+      font-size: 24px;
+      margin-bottom: 18px;
+    }
+
+    .card h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: #cbd5e1;
+      font-size: 15px;
+    }
+
+    .industries-box {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 36px;
+      padding: 40px;
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .industry-tags {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .tag {
+      background: rgba(2,6,23,0.55);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 13px 16px;
+      border-radius: 16px;
+      font-weight: 700;
+      color: #e2e8f0;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .step-number {
+      color: #22d3ee;
+      font-weight: 900;
+      margin-bottom: 14px;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 38px;
+      align-items: center;
+    }
+
+    .price-card {
+      background: rgba(34,211,238,0.1);
+      border: 1px solid rgba(34,211,238,0.25);
+      border-radius: 36px;
+      padding: 36px;
+    }
+
+    .price-box {
+      background: rgba(2,6,23,0.55);
+      border-radius: 28px;
+      padding: 24px;
+      margin: 24px 0;
+    }
+
+    .price {
+      font-size: 54px;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .price span {
+      font-size: 17px;
+      color: #94a3b8;
+    }
+
+    .checklist {
+      list-style: none;
+      margin: 22px 0;
+    }
+
+    .checklist li {
+      margin-bottom: 12px;
+      color: #e2e8f0;
+    }
+
+    .final-cta {
+      text-align: center;
+      max-width: 780px;
+      margin: auto;
+    }
+
+    .final-cta h2 {
+      font-size: clamp(36px, 5vw, 62px);
+      line-height: 1;
+      margin-bottom: 18px;
+    }
+
+    .final-cta p {
+      color: #cbd5e1;
+      font-size: 18px;
+      margin-bottom: 28px;
+    }
+
+    footer {
+      padding: 34px 0;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      color: #94a3b8;
+      font-size: 14px;
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .industries-box,
+      .pricing-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .features,
+      .steps {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .features,
+      .steps,
+      .stats,
+      .industry-tags {
+        grid-template-columns: 1fr;
+      }
+
+      header .btn {
+        display: none;
+      }
+
+      .hero {
+        padding: 60px 0;
+      }
+
+      .phone-inner,
+      .industries-box,
+      .price-card {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <a href="#" class="logo">
+        <span class="logo-icon">☎</span>
+        <span>CallPilot AI</span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#industries">Who it helps</a>
+        <a href="#pricing">Pricing</a>
+      </nav>
+
+      <a class="btn btn-primary" href="https://wa.me/447901921642?text=Hi%2C%20I%20want%20to%20test%20the%20AI%20phone%20receptionist%20demo.">
+        Book demo
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="glow"></div>
+
+      <div class="container hero-grid">
+        <div>
+          <div class="badge">Built for local businesses that rely on phone calls</div>
+
+          <h1>Never miss another customer call.</h1>
+
+          <p>
+            CallPilot AI is a 24/7 AI phone receptionist for local businesses.
+            It answers calls, qualifies customers, captures job details, and sends you a clear lead summary instantly.
+          </p>
+
+          <div class="cta-row">
+            <a class="btn btn-primary" href="https://wa.me/447901921642?text=Hi%2C%20I%20want%20a%20free%20CallPilot%20AI%20demo%20for%20my%20business.">
+              Get a free demo →
+            </a>
+            <a class="btn btn-secondary" href="tel:+15717884804">
+              Call live demo
+            </a>
+          </div>
+
+          <div class="stats">
+            <div class="stat">
+              <strong>24/7</strong>
+              <span>call answering</span>
+            </div>
+            <div class="stat">
+              <strong>Instant</strong>
+              <span>lead summaries</span>
+            </div>
+            <div class="stat">
+              <strong>Local</strong>
+              <span>service focus</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="phone-card">
+          <div class="phone-inner">
+            <div class="call-top">
+              <div>
+                <small>Incoming call</small>
+                <h3>Emergency plumbing lead</h3>
+              </div>
+              <div class="call-icon">☎</div>
+            </div>
+
+            <div class="message">
+              <strong>AI receptionist:</strong><br />
+              "Thanks for calling ABC Plumbing. Is this an emergency, a quote, or an existing job?"
+            </div>
+
+            <div class="lead">
+              <strong>Lead captured</strong>
+              <ul>
+                <li>✅ Caller name: James</li>
+                <li>✅ Postcode: SW11</li>
+                <li>✅ Issue: leaking pipe</li>
+                <li>✅ Urgency: today</li>
+              </ul>
+            </div>
+
+            <div class="message">
+              ✅ Lead summary sent to business owner instantly.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features">
+      <div class="container">
+        <div class="section-title">
+          <small>What it does</small>
+          <h2>A receptionist that never clocks off.</h2>
+          <p>Simple, practical call handling for businesses that cannot afford to miss leads.</p>
+        </div>
+
+        <div class="features">
+          <div class="card">
+            <div class="card-icon">📞</div>
+            <h3>Answers missed calls</h3>
+            <p>Your AI receptionist picks up when you are busy, closed, on a job, or already speaking to another customer.</p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">📝</div>
+            <h3>Captures every lead</h3>
+            <p>It collects the caller's name, phone number, postcode, job details, urgency, and preferred callback time.</p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">⚡</div>
+            <h3>Instant summaries</h3>
+            <p>Receive a clear summary after each call so you can call back faster and prioritise urgent jobs.</p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">⏰</div>
+            <h3>Works 24/7</h3>
+            <p>Perfect for emergency plumbers, electricians, locksmiths, drainage companies, clinics, and local services.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="industries">
+      <div class="container">
+        <div class="industries-box">
+          <div>
+            <div class="section-title" style="margin-bottom: 0;">
+              <small>Who it helps</small>
+              <h2>Perfect for busy local businesses.</h2>
+              <p>
+                Especially useful where customers call because they need help quickly,
+                want a quote, or need an appointment.
+              </p>
+            </div>
+          </div>
+
+          <div class="industry-tags">
+            <div class="tag">Plumbers</div>
+            <div class="tag">Electricians</div>
+            <div class="tag">Locksmiths</div>
+            <div class="tag">Drainage companies</div>
+            <div class="tag">Pest control</div>
+            <div class="tag">Roofers</div>
+            <div class="tag">Boiler engineers</div>
+            <div class="tag">Mobile mechanics</div>
+            <div class="tag">Cleaners</div>
+            <div class="tag">Dental clinics</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-title">
+          <small>How it works</small>
+          <h2>Live in days, not months.</h2>
+        </div>
+
+        <div class="steps">
+          <div class="card">
+            <div class="step-number">01</div>
+            <h3>We learn your business</h3>
+            <p>We collect your services, opening hours, service areas, FAQs, and what details you want from callers.</p>
+          </div>
+
+          <div class="card">
+            <div class="step-number">02</div>
+            <h3>We build your AI receptionist</h3>
+            <p>Your assistant is trained to answer professionally, qualify callers, and capture the right information.</p>
+          </div>
+
+          <div class="card">
+            <div class="step-number">03</div>
+            <h3>You receive more leads</h3>
+            <p>Missed calls, after-hours calls, and overflow calls are answered and summarised for you instantly.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing">
+      <div class="container pricing-grid">
+        <div class="section-title">
+          <small>Simple starter offer</small>
+          <h2>Start with a free demo.</h2>
+          <p>
+            Try CallPilot AI with your business name and call flow before committing.
+            Perfect for missed-call handling, after-hours coverage, or overflow calls.
+          </p>
+        </div>
+
+        <div class="price-card">
+          <small style="color:#a5f3fc;font-weight:800;">Founder package</small>
+          <h2 style="margin-top:8px;">AI Receptionist Setup</h2>
+
+          <div class="price-box">
+            <small style="color:#94a3b8;">From</small>
+            <div class="price">£199<span>/month</span></div>
+            <p style="color:#94a3b8;margin-top:8px;">Setup fee may apply depending on call flow and integrations.</p>
+          </div>
+
+          <ul class="checklist">
+            <li>✅ 24/7 AI call answering</li>
+            <li>✅ Lead capture and call summaries</li>
+            <li>✅ Custom greeting and business script</li>
+            <li>✅ Emergency lead tagging</li>
+            <li>✅ Setup support included</li>
+          </ul>
+
+          <a class="btn btn-primary" style="width:100%;text-align:center;" href="https://wa.me/447901921642?text=Hi%2C%20I%20want%20to%20book%20a%20CallPilot%20AI%20demo.">
+            Book my free demo →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container final-cta">
+        <h2>Want to see how many calls you could save?</h2>
+        <p>
+          Send us your business name and we'll prepare a quick AI receptionist demo you can call and test.
+        </p>
+
+        <div class="cta-row" style="justify-content:center;">
+          <a class="btn btn-primary" href="https://wa.me/447901921642?text=Hi%2C%20please%20create%20a%20CallPilot%20AI%20demo%20for%20my%20business.">
+            Request demo →
+          </a>
+          <a class="btn btn-secondary" href="mailto:hajabdelhak66@gmail.com?subject=CallPilot%20AI%20Demo&body=Hi%2C%20I%20would%20like%20to%20test%20the%20AI%20phone%20receptionist%20demo.">
+            Email us
+          </a>
+        </div>
+
+        <p style="margin-top:22px;font-size:15px;color:#94a3b8;">
+          WhatsApp: +44 7901 921642<br />
+          Email: hajabdelhak66@gmail.com<br />
+          Demo number: +1 571 788 4804
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <p>© 2026 CallPilot AI. AI phone receptionist for local businesses.</p>
+      <p>
+        <a href="tel:+15717884804">Call demo</a>
+        &nbsp; | &nbsp;
+        <a href="mailto:hajabdelhak66@gmail.com">Contact</a>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
